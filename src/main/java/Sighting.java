@@ -5,10 +5,10 @@ import java.util.Arrays;
 import java.sql.Timestamp;
 
 public class Sighting {
+  private int id;
   private int animal_id;
   private String location;
   private String ranger_name;
-  private int id;
   private Timestamp time;
 
   public Sighting(int animal_id, String location, String ranger_name) {
