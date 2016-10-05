@@ -78,4 +78,14 @@ public void delete() {
       .executeUpdate();
   }
 }
+
+public void update(String name) {
+  try(Connection runnerman = DB.sql2o.open()) {
+    String sequel = "UPDATE animals SET name = :name WHERE id=:id";
+    runnerman.createQuery(sequel)
+             .addParameter("id", id)
+             .addParameter("name", name)
+             .executeUpdate();
+  }
+}
 }
