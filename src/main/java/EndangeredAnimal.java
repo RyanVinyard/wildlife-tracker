@@ -27,7 +27,6 @@ public class EndangeredAnimal extends Animal {
     return age;
   }
 
-
 @Override
 public void save() {
   try(Connection con = DB.sql2o.open()) {
@@ -39,6 +38,7 @@ public void save() {
       .addParameter("age", this.age)
       .executeUpdate()
       .getKey();
+      //Override public save function to save to database
   }
 }
 
@@ -47,6 +47,7 @@ public static List<EndangeredAnimal> getEndangeredAnimals() {
     String sequel = "SELECT * FROM animals WHERE endangered = true";
     return runnerman.createQuery(sequel).throwOnMappingFailure(false)
            .executeAndFetch(EndangeredAnimal.class);
+    //get function to grab specifically endangered animals from database
   }
 }
 
@@ -60,6 +61,7 @@ public static EndangeredAnimal findEndangeredAnimal(int id) {
     return endangeredanimal;
   } catch (IndexOutOfBoundsException exception) {
     return null;
+    //Find function to find endangered animals in database
   }
 }
 
@@ -70,6 +72,7 @@ public void updateHealth(String health) {
              .addParameter("id", id)
              .addParameter("health", health)
              .executeUpdate();
+    //function to update animal's health
   }
 }
 
@@ -80,6 +83,7 @@ public void updateAge(String age) {
              .addParameter("id", id)
              .addParameter("age", age)
              .executeUpdate();
+    //function to update animal's age
+    }
   }
-}
 }

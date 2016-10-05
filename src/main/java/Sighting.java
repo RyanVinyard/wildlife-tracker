@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.sql.Timestamp;
 
 public class Sighting {
+
   private int id;
   private int animal_id;
   private String location;
@@ -48,7 +49,8 @@ public class Sighting {
       .throwOnMappingFailure(false)
       .executeUpdate()
       .getKey();
-  }
+      //Save function for saving to Postgres database
+    }
   }
 
   @Override
@@ -60,6 +62,7 @@ public class Sighting {
       return this.getAnimalId() == (newSighting.getAnimalId()) &&
       this.getLocation().equals(newSighting.getLocation()) &&
       this.getRangerName().equals(newSighting.getRangerName());
+      //Overrides the equals function already in use due to being public
     }
   }
 
@@ -69,6 +72,7 @@ public class Sighting {
       return runnerman.createQuery(sql)
         .throwOnMappingFailure(false)
         .executeAndFetch(Sighting.class);
+        //All function to query all entries of sighting(in this case) from database
     }
   }
 
@@ -81,6 +85,7 @@ public class Sighting {
       return sighting;
     } catch (IndexOutOfBoundsException exception) {
       return null;
+      //Find function to grab specific entries from database by Id
     }
   }
 }

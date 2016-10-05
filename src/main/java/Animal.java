@@ -43,8 +43,9 @@ public void save() {
       .throwOnMappingFailure(false)
       .executeUpdate()
       .getKey();
+      //Save function saves to database
+    }
   }
-}
 
 @Override
 public boolean equals(Object otherAnimal) {
@@ -53,8 +54,9 @@ public boolean equals(Object otherAnimal) {
   } else {
     Animal newAnimal = (Animal) otherAnimal;
     return this.getName().equals(newAnimal.getName()) && this.isEndangered() == (newAnimal.isEndangered());
+    //Overrides already set public equals function
+    }
   }
-}
 
 public static Animal find(int id) {
   try(Connection con = DB.sql2o.open()) {
@@ -66,6 +68,7 @@ public static Animal find(int id) {
     return animal;
   } catch (IndexOutOfBoundsException exception) {
     return null;
+    //Find function to find from database
   }
 }
 
@@ -76,8 +79,9 @@ public void delete() {
       .addParameter("id", id)
       .throwOnMappingFailure(false)
       .executeUpdate();
+      //Delete function to delete from database, remember what happens if you forget this!
+    }
   }
-}
 
 public void update(String name) {
   try(Connection runnerman = DB.sql2o.open()) {
@@ -86,6 +90,7 @@ public void update(String name) {
              .addParameter("id", id)
              .addParameter("name", name)
              .executeUpdate();
+    //Update function for changing, in this case, name of animal
+    }
   }
-}
 }
