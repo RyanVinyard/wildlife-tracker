@@ -55,4 +55,17 @@ public boolean equals(Object otherAnimal) {
     return this.getName().equals(newAnimal.getName()) && this.isEndangered() == (newAnimal.isEndangered());
   }
 }
+
+public static Animal find(int id) {
+  try(Connection con = DB.sql2o.open()) {
+    String sql = "SELECT * FROM animals WHERE id=:id;";
+    Animal animal = con.createQuery(sql)
+      .addParameter("id", id)
+      .throwOnMappingFailure(false)
+      .executeAndFetchFirst(Animal.class);
+    return animal;
+  } catch (IndexOutOfBoundsException exception) {
+    return null;
+  }
+}
 }

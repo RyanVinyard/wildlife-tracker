@@ -30,4 +30,13 @@ public class AnimalTest {
     secondAnimal.save();
     assertEquals(2, Animal.all().size());
   }
+
+  @Test
+  public void find_returnsAnimalSharingSameId_otherAnimal() {
+    Animal testAnimal = new Animal("Penguin");
+    testAnimal.save();
+    Animal otherAnimal = new Animal("Two Headed Penguin");
+    otherAnimal.save();
+    assertEquals(Animal.find(otherAnimal.getId()), otherAnimal);
+  }
 }
