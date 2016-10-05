@@ -21,4 +21,13 @@ public class AnimalTest {
     Animal secondAnimal = new Animal("Penguin");
     assertTrue(testAnimal.equals(secondAnimal));
   }
+
+  @Test
+  public void all_returnsAllAnimals_true() {
+    Animal testAnimal = new Animal("Penguin");
+    testAnimal.save();
+    Animal secondAnimal = new Animal("Two Headed Penguin");
+    secondAnimal.save();
+    assertEquals(2, Animal.all().size());
+  }
 }
