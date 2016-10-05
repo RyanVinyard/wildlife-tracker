@@ -62,4 +62,24 @@ public static EndangeredAnimal findEndangeredAnimal(int id) {
     return null;
   }
 }
+
+public void updateHealth(String health) {
+  try(Connection runnerman = DB.sql2o.open()) {
+    String sql = "UPDATE animals SET health = :health WHERE id=:id";
+    runnerman.createQuery(sql)
+             .addParameter("id", id)
+             .addParameter("health", health)
+             .executeUpdate();
+  }
+}
+
+public void updateAge(String age) {
+  try(Connection runnerman = DB.sql2o.open()) {
+    String sql = "UPDATE animals SET age = :age WHERE id = :id";
+    runnerman.createQuery(sql)
+             .addParameter("id", id)
+             .addParameter("age", age)
+             .executeUpdate();
+  }
+}
 }
