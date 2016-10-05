@@ -17,7 +17,34 @@ public class SightingTest {
   public void sighting_instantiatesCorrectly_true() {
     Animal testAnimal = new Animal("Penguin");
     testAnimal.save();
-    Sighting testSighting = new Sighting(testAnimal.getId(), "Antarcica", "Pete Jones");
+    Sighting testSighting = new Sighting(testAnimal.getId(), "Antarctica", "Pete Jones");
     assertEquals(true, testSighting instanceof Sighting);
+  }
+
+  @Test
+  public void equals_savesAndReturnsTrueWhenTwoInstancesAreEqual_true() {
+    Animal testAnimal = new Animal("Penguin");
+    testAnimal.save();
+    Sighting testSighting = new Sighting(testAnimal.getId(), "Antarctica", "Pete Jones");
+    Sighting otherSighting = new Sighting(testAnimal.getId(), "Antarctica", "Pete Jones");
+    assertTrue(testSighting.equals(otherSighting));
+  }
+
+  @Test
+  public void all_returnsAllSightings_true() {
+    Sighting testSighting = new Sighting(0, "Antarctica", "Pete Jones");
+    testSighting.save();
+    Sighting anotherTestSighting = new Sighting(1, "Africa", "Pete Jones");
+    anotherTestSighting.save();
+    assertEquals(true, Sighting.all().get(0).equals(testSighting));
+  }
+
+  @Test
+  public void find_returnsEquivalentFindings_otherSighting() {
+    Sighting testSighting = new Sighting (0, "Antarctica", "Pete Jones");
+    testSighting.save();
+    Sighting otherSighting = new Sighting (1, "Africa", "Pete Jones");
+    otherSighting.save();
+    assertEquals(Sighting.find(otherSighting.getId()), otherSighting);
   }
 }
