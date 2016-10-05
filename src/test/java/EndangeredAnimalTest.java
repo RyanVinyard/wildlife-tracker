@@ -27,4 +27,11 @@ public class EndangeredAnimalTest {
     testEndangeredAnimal.save();
     assertTrue(testEndangeredAnimal.getId() > 0);
   }
+
+  @Test
+  public void getEndangeredAnimals_returnsOnlyEndangeredAnimals_true() {
+    EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Dodo", "healthy", "adult");
+    testEndangeredAnimal.save();
+    assertEquals(true, EndangeredAnimal.getEndangeredAnimals().get(0).equals(testEndangeredAnimal));
+  }
 }

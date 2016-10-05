@@ -41,4 +41,12 @@ public void save() {
       .getKey();
   }
 }
+
+public static List<EndangeredAnimal> getEndangeredAnimals() {
+  try(Connection runnerman = DB.sql2o.open()) {
+    String sequel = "SELECT * FROM animals WHERE endangered = true";
+    return runnerman.createQuery(sequel).throwOnMappingFailure(false)
+           .executeAndFetch(EndangeredAnimal.class);
+  }
+}
 }
