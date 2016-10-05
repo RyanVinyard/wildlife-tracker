@@ -49,4 +49,17 @@ public static List<EndangeredAnimal> getEndangeredAnimals() {
            .executeAndFetch(EndangeredAnimal.class);
   }
 }
+
+public static EndangeredAnimal findEndangeredAnimal(int id) {
+  try(Connection runnerman = DB.sql2o.open()) {
+    String sql = "SELECT * FROM animals WHERE id = :id";
+    EndangeredAnimal endangeredanimal = runnerman.createQuery(sql)
+      .addParameter("id", id)
+      .throwOnMappingFailure(false)
+      .executeAndFetchFirst(EndangeredAnimal.class);
+    return endangeredanimal;
+  } catch (IndexOutOfBoundsException exception) {
+    return null;
+  }
+}
 }
