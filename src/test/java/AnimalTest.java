@@ -39,4 +39,12 @@ public class AnimalTest {
     otherAnimal.save();
     assertEquals(Animal.find(otherAnimal.getId()), otherAnimal);
   }
+
+  @Test
+  public void delete_deletesAnimal_0() {
+    Animal testAnimal = new Animal("Penguin");
+    testAnimal.save();
+    testAnimal.delete();
+    assertEquals(0, Animal.all().size());
+  }
 }

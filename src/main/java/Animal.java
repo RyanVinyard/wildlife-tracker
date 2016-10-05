@@ -68,4 +68,14 @@ public static Animal find(int id) {
     return null;
   }
 }
+
+public void delete() {
+  try(Connection con = DB.sql2o.open()) {
+    String sql = "DELETE FROM animals WHERE id=:id;";
+    con.createQuery(sql)
+      .addParameter("id", id)
+      .throwOnMappingFailure(false)
+      .executeUpdate();
+  }
+}
 }
