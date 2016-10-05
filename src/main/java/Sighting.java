@@ -37,4 +37,17 @@ public class Sighting {
   public Timestamp getTime() {
     return time;
   }
+
+  public void save() {
+  try(Connection con = DB.sql2o.open()) {
+    String sql = "INSERT INTO sightings (animal_id, location, ranger_name, time) VALUES (:animal_id, :location, :ranger_name, now());";
+    this.id = (int) con.createQuery(sql, true)
+      .addParameter("animal_id", this.animal_id)
+      .addParameter("location", this.location)
+      .addParameter("ranger_name", this.ranger_name)
+      .throwOnMappingFailure(false)
+      .executeUpdate()
+      .getKey();
+  }
+  }
 }
