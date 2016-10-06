@@ -96,6 +96,6 @@ public class Sighting {
         .addParameter("id", id)
         .executeAndFetch(Sighting.class);
       return sightings;
+    }
   }
-}
 }
