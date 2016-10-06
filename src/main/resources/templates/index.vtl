@@ -1,0 +1,18 @@
+<h2>Wildlife sightings</h2>
+<h3>What is this webpage?</h3>
+
+<p>My name is Peter Jones, and I am the chief ranger for Sandalwoodshire Forest. As you may have heard, a recent proposal is threatening to clearcut Sandalwoodshire Forest for timber use. This environmental impact study may be our only chance to save the forest, so please report all legitimate sightings of animals, and especially endagered animals, to this tracker.</p>
+
+<form action="/" method="post">
+  <label for="location">Area of the forest:</label>
+  <input type="text" name="location" required placeholder="location">
+  <br>
+  <label for="rangerName">What is your name?</label>
+  <p>Ranger <input type="text" name="rangerName" required></p>
+  <br>
+  <h4>If you have a new animal, please click the "Add Animal" button below. If the animal is already in the database, you can select the species from the menu.</h4>
+  <h5><a href="/animal/new">Add Animal</a></h5>
+  <label for="animal">Select the Animal you Spotted</label>
+  <select class="form-control" name="animal">
+    #foreach($animal in $animals)
+      <option value="$animal.getId()">$animal.getName()
