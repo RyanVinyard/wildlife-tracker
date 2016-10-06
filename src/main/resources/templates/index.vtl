@@ -5,14 +5,34 @@
 
 <form action="/" method="post">
   <label for="location">Area of the forest:</label>
-  <input type="text" name="location" required placeholder="location">
+  <input type="text" name="location" placeholder="location">
   <br>
   <label for="rangerName">What is your name?</label>
-  <p>Ranger <input type="text" name="rangerName" required></p>
+  <p>Ranger <input type="text" name="rangerName"></p>
   <br>
   <h4>If you have a new animal, please click the "Add Animal" button below. If the animal is already in the database, you can select the species from the menu.</h4>
   <h5><a href="/animal/new">Add Animal</a></h5>
   <label for="animal">Select the Animal you Spotted</label>
   <select class="form-control" name="animal">
     #foreach($animal in $animals)
-      <option value="$animal.getId()">$animal.getName()
+      <option value="$animal.getId()">$animal.getName() Endangered: $animal.isEndangered()</option>
+    #end
+  </select>
+  <br>
+  <label for="location">Location of animal</label>
+  <input type="text" name="location">
+  <br>
+  <label for="rangerName">What is your name</label>
+  <p>Ranger <input type="text" name="rangerName"></p>
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+<h2>Endangered Wildlife</h2>
+#if ($endangeredAnimals.size() == 0)
+  <p>If you've seen an endangered animal, <a href="/animal/new">add it to the database.</a></p>
+#else
+#foreach ($endangeredAnimal in $endangeredAnimals)
+  <a href="/animal/$endangeredAnimal.getId()">
+    <h5>$endangeredAnimal.getName()</h5>
+    <h5>$endangeredAnimal.getUniqueSighting().size() Sighting</h5></a>
+#end
