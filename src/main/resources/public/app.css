@@ -9,3 +9,55 @@ input[type="checkbox"]:checked ~ .reveal-if-active {
   max-height: 100px;
   overflow: visible;
 }
+
+body {
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/d/de/Redwood_National_Park,_fog_in_the_forest.jpg");
+  background-size: cover;
+}
+
+#mainHeader {
+  text-align: center;
+  font-size: 48pt;
+  color: #000099;
+}
+
+#mainHeader:link {
+  color: #000099;
+}
+
+#mainHeader:visited {
+  color: #000099;
+}
+
+#mainHeader:hover {
+  cursor: pointer;
+}
+
+#indexHead {
+  text-align: center;
+  font-size: 32pt;
+  margin-bottom: 12px;
+}
+
+#description {
+  text-align: center;
+}
+
+#whatIs {
+  text-align: center;
+}
+
+#signature {
+  font-size: 24pt;
+  font-family: 'Pinyon Script', cursive;
+  text-align: center;
+}
+
+#addNewAnimal {
+  font: 24pt;
+  text-align: center;
+}
+
+input[type=text] {
+  margin: 12px;
+}

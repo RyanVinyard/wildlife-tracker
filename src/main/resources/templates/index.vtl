@@ -1,11 +1,15 @@
-<h2>Wildlife sightings</h2>
-<h3>What is this webpage?</h3>
+<h2 id="indexHead">Wildlife sightings</h2>
+<h3 id="whatIs">What is this webpage?</h3>
 
-<p>My name is Peter Jones, and I am the chief ranger for Sandalwoodshire Forest. As you may have heard, a recent proposal is threatening to clearcut Sandalwoodshire Forest for timber use. This environmental impact study may be our only chance to save the forest, so please report all legitimate sightings of animals, and especially endagered animals, to this tracker.</p>
+<p id="description">My name is Peter Jones, and I am the chief ranger for Sandalwoodshire Forest. As you may have heard, a recent proposal is threatening to clearcut Sandalwoodshire Forest for timber use. This environmental impact study may be our only chance to save the forest, so please report all legitimate sightings of animals, and especially endagered animals, to this tracker. Please, help us save Sandalwoodshire Forest!</p>
+<p id="signature">Pete Jones</p>
 
 <form action="/" method="post">
   <h4>First, add a new animal by clicking "Add New Animal" below. Enter the animal and whether it is endangered, then after submitting, you can add details of any sightings with the form below. Just select the animal from the dropdown menu and fill in the location and your name.</h4>
-  <h5><a href="/animal/new">Add New Animal</a></h5>
+  <h5 id="addNewAnimal"><a href="/animal/new">Add New Animal</a></h5>
+  #if ($animals.size() == 0)
+    <p>Go ahead, add an animal!</p>
+  #else
   <label for="animal">Select the particular Animal you Spotted</label>
   <select class="form-control" name="animal">
     #foreach($animal in $animals)
@@ -19,6 +23,7 @@
   <label for="rangerName">What is your name, ranger?</label>
   <p>Ranger <input type="text" name="rangerName"></p>
   <button type="submit" class="btn btn-success">Submit</button>
+  #end
 </form>
 
 <h2>Endangered Wildlife</h2>
