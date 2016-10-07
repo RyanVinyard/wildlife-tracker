@@ -19,6 +19,7 @@ body {
   text-align: center;
   font-size: 48pt;
   color: #000099;
+  text-decoration: none;
 }
 
 #mainHeader:link {
@@ -31,6 +32,7 @@ body {
 
 #mainHeader:hover {
   cursor: pointer;
+  text-decoration: none;
 }
 
 #indexHead {
