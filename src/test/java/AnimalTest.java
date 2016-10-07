@@ -47,12 +47,4 @@ public class AnimalTest {
     testAnimal.delete();
     assertEquals(0, Animal.all().size());
   }
-
-  @Test
-  public void update_updatesName_String() {
-    Animal updatingAnimal = new Animal("Cool Penguin");
-    updatingAnimal.save();
-    updatingAnimal.update("Two Headed Duck");
-    assertEquals("Two Headed Duck", Animal.find(updatingAnimal.getId()).getName());
-  }
 }

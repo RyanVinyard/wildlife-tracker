@@ -13,6 +13,12 @@ public class Sighting {
   private Timestamp time;
 
   public Sighting(int animal_id, String location, String ranger_name) {
+    if (location.equals("") || ranger_name.equals("")) {
+      throw new IllegalArgumentException("This form is not complete!");
+    }
+    if(location.equals(ranger_name)){
+      throw new IllegalArgumentException("You accidentially filled out the same info in both name and location fields!");
+    }
     this.animal_id = animal_id;
     this.location = location;
     this.ranger_name = ranger_name;

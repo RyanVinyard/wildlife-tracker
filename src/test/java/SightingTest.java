@@ -47,4 +47,16 @@ public class SightingTest {
     otherSighting.save();
     assertEquals(Sighting.find(otherSighting.getId()), otherSighting);
   }
+
+  @Test
+  public void canCatchException_string() {
+    String caught = "oh no";
+    Animal testAnimal = new Animal("Penguin");
+    try{
+      Sighting newSighting = new Sighting(0, "", "");
+    } catch (IllegalArgumentException exception) {
+      caught = "caught it!";
+    }
+    assertEquals(caught, "caught it!");
+  }
 }
