@@ -103,7 +103,7 @@ public void delete() {
         .executeAndFetch(Sighting.class);
     }
   }
-
+  //These two functions will allow sightings to be deleted whenever an animal is deleted. This SHOULDN'T be necessary, but just in case a ranger made a sighting on an erroneous animal.
   public void deleteSightings() {
     for(Sighting sighting : this.getSightings()){
       sighting.delete();
