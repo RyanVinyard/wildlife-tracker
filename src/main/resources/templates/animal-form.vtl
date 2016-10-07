@@ -1,0 +1,27 @@
+<form action="/animal/new" method="post">
+  <label for="name">Animal:</label>
+  <input type="text" name="name">
+    <label for="endangered">This animal is endangered!</label>
+    <input type="checkbox" name="endangered">
+    <div class="reveal-if-active">
+      <label for="animalHealth">Animal's Health</label>
+      <select class="form-control" name="health">
+        <option>$Excellent</option>
+        <option>$Ok</option>
+        <option>$Poor</option>
+      </select>
+      <br>
+      <br>
+      <label for="animalAge">Age of animal</label>
+      <select class="form-control" name="age">
+        <option>$Infant</option>
+        <option>$Young</option>
+        <option>$Adult</option>
+      </select>
+    </div>
+  </div>
+<br> <br>
+<br> <br>
+<br> <br>
+<button type="submit" class="btn btn-success">Add Animal</button>
+</form>

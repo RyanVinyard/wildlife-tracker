@@ -1,0 +1,18 @@
+<h2>$animal.getName()<h2>
+  <h3>Endangered Status: $animal.isEndangered()</h3>
+
+#if($animal.getUniqueSighting().size() == 0)
+  <h4>There's nothing here, ranger!</h4>
+#else
+  #foreach($sighting in $animal.getUniqueSighting())
+  <ul>
+    <li>Time of Sighting: $sighting.getTime()</li>
+    <li>Location: $sighting.getLocation()</li>
+    #if($animal.isEndangered().equals(true))
+    <li>Animal's health: $endangeredAnimal.getHealth()</li>
+    <li>Animal's Age: $endangeredAnimal.getAge()</li>
+    #end
+    <li>Reporting Ranger: $sighting.getRangerName()</li>
+  </ul>
+  #end
+#end

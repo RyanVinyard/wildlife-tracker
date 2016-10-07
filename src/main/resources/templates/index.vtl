@@ -27,7 +27,15 @@
 #else
 #foreach ($endangeredAnimal in $endangeredAnimals)
   <a href="/animal/$endangeredAnimal.getId()">
-    <h5>$endangeredAnimal.getName()</h5>
-    <h5>$endangeredAnimal.getUniqueSighting().size() Sighting</h5></a>
+    <h5>$endangeredAnimal.getName()</h5></a>
 #end
+#end
+
+<h2>All Wildlife Sighted</h2>
+#if ($endangeredAnimals.size() == 0)
+  <h4><a href="/animal/new">No wildlife reported, as of yet!</a></h4>
+#else
+  #foreach ($animal in $animals)
+    <a href="/animal/$animal.getId()"><h4>$animal.getName()</h5></a>
+  #end
 #end

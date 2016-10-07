@@ -27,10 +27,34 @@ public class EndangeredAnimal extends Animal {
     return age;
   }
 
+  public static String getHorribleHealth() {
+    return HORRIBLE_HEALTH;
+  }
+
+  public static String getBadHealth() {
+    return BAD_HEALTH;
+  }
+
+  public static String getGoodHealth() {
+    return GOOD_HEALTH;
+  }
+
+  public static String getInfant() {
+    return INFANT;
+  }
+
+  public static String getYoung() {
+    return YOUNG;
+  }
+
+  public static String getAdult() {
+    return ADULT;
+  }
+
 @Override
 public void save() {
   try(Connection con = DB.sql2o.open()) {
-    String sql = "INSERT INTO animals (name, endangered, health, age) VALUES (:name, :endangered, :health, :age);";
+    String sql = "INSERT INTO animals (name, endangered, health, age) VALUES (:name, :endangered, :health, :age)";
     this.id = (int) con.createQuery(sql, true)
       .addParameter("name", this.name)
       .addParameter("endangered", this.endangered)
