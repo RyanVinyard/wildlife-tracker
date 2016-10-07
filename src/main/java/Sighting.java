@@ -88,4 +88,13 @@ public class Sighting {
       //Find function to grab specific entries from database by Id
     }
   }
+
+  public void delete() {
+    try(Connection runnerman = DB.sql2o.open()) {
+      String sql = "DELETE FROM sightings WHERE id=:id";
+      runnerman.createQuery(sql)
+        .addParameter("id", id)
+        .executeUpdate();
+    }
+  }
 }

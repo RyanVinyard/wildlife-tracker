@@ -83,16 +83,7 @@ public void delete() {
     }
   }
 
-public void update(String name) {
-  try(Connection runnerman = DB.sql2o.open()) {
-    String sequel = "UPDATE animals SET name = :name WHERE id=:id";
-    runnerman.createQuery(sequel)
-             .addParameter("id", id)
-             .addParameter("name", name)
-             .executeUpdate();
-    //Update function for changing, in this case, name of animal
-    }
-  }
+//I made the decision to delete the update function that WAS here, as I felt it isn't entirely relevant to this application
 
   public List<Sighting> getUniqueSighting() {
   try(Connection runnerman = DB.sql2o.open()) {
@@ -101,6 +92,21 @@ public void update(String name) {
         .addParameter("id", id)
         .executeAndFetch(Sighting.class);
       return sightings;
+    }
+  }
+
+  public List<Sighting> getSightings() {
+    try(Connection runnerman = DB.sql2o.open()) {
+      String sql = "SELECT * FROM sightings WHERE animal_Id=:id";
+      return runnerman.createQuery(sql)
+        .addParameter("id", this.id)
+        .executeAndFetch(Sighting.class);
+    }
+  }
+
+  public void deleteSightings() {
+    for(Sighting sighting : this.getSightings()){
+      sighting.delete();
     }
   }
 }

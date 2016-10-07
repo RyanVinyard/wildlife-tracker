@@ -4,9 +4,9 @@
 <p>My name is Peter Jones, and I am the chief ranger for Sandalwoodshire Forest. As you may have heard, a recent proposal is threatening to clearcut Sandalwoodshire Forest for timber use. This environmental impact study may be our only chance to save the forest, so please report all legitimate sightings of animals, and especially endagered animals, to this tracker.</p>
 
 <form action="/" method="post">
-  <h4>If you have a new animal, please click the "Add Animal" button below. If the animal is already in the database, you can select the species from the menu.</h4>
-  <h5><a href="/animal/new">Add Animal</a></h5>
-  <label for="animal">Select the Animal you Spotted</label>
+  <h4>First, add a new animal by clicking "Add New Animal" below. Enter the animal and whether it is endangered, then after submitting, you can add details of any sightings with the form below. Just select the animal from the dropdown menu and fill in the location and your name.</h4>
+  <h5><a href="/animal/new">Add New Animal</a></h5>
+  <label for="animal">Select the particular Animal you Spotted</label>
   <select class="form-control" name="animal">
     #foreach($animal in $animals)
       <option value="$animal.getId()">$animal.getName() Endangered: $animal.isEndangered()</option>
@@ -32,7 +32,7 @@
 #end
 
 <h2>All Wildlife Sighted</h2>
-#if ($endangeredAnimals.size() == 0)
+#if ($animals.size() == 0)
   <h4><a href="/animal/new">No wildlife reported, as of yet!</a></h4>
 #else
   #foreach ($animal in $animals)

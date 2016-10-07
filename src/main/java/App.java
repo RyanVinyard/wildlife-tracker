@@ -98,5 +98,14 @@ public class App {
      model.put("template", "templates/failure.vtl");
      return new ModelAndView(model, layout);
    }, new VelocityTemplateEngine());
+
+   post("/animal/:id/delete", (request, response) -> {
+     Map<String, Object> model = new HashMap<String, Object>();
+     Animal animal = Animal.find(Integer.parseInt(request.params("id")));
+     animal.deleteSightings();
+     animal.delete();
+     response.redirect("/");
+     return new ModelAndView(model, layout);
+   }, new VelocityTemplateEngine());
   }
 }

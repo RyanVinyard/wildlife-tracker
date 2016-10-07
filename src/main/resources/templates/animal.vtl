@@ -1,9 +1,6 @@
 <h2>$animal.getName()<h2>
   <h3>Endangered Status: $animal.isEndangered()</h3>
 
-#if($animal.getUniqueSighting().size() == 0)
-  <h4>There's nothing here, ranger!</h4>
-#else
   #foreach($sighting in $animal.getUniqueSighting())
   <ul>
     <li>Time of Sighting: $sighting.getTime()</li>
@@ -15,4 +12,6 @@
     <li>Reporting Ranger: $sighting.getRangerName()</li>
   </ul>
   #end
-#end
+<form action="/animal/$animal.getId()/delete" method="post">
+  <button type="submit" class="btn btn-danger" id="delete">Click here to delete this animal from the database</button>
+<form>
